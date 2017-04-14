@@ -6,28 +6,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-<title>Spring MyContact</title>
+<title>Spring Super Market</title>
 
 <link href="../static/images/logo.png" th:href="@{/images/logo.png}"
     rel="shortcut icon" />
 
 <!-- Bootstrap -->
-<link
+<!-- <link
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
-    rel="stylesheet" />
+    rel="stylesheet" /> -->
 <!-- Custom style -->
 <!-- <link href="../static/css/style.css" th:href="@{/css/style.css}"
     rel="stylesheet" /> -->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script
+<!-- <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"
-    th:src="@{/webjars/jquery/1.12.4/jquery.min.js}"></script>
+    th:src="@{/webjars/jquery/1.12.4/jquery.min.js}"></script> -->
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script
+<!-- <script
     src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-    th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script> -->
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -1151,6 +1151,90 @@ $(document).ready(function() {
 		</div>
 	</div>
 	<!--  //copy-right-->
+		<!-- cart-js -->
+	<script src="../js/minicart.js"></script>
+<!-- 	<script>
+        w3ls.render();
+
+        w3ls.cart.on('w3sb_checkout', function (evt) {
+        	var items, len, i;
+
+        	if (this.subtotal() > 0) {
+        		items = this.items();
+
+        		for (i = 0, len = items.length; i < len; i++) {
+        			items[i].set('shipping', 0);
+        			items[i].set('shipping2', 0);
+        		}
+        	}
+        });
+    </script>  --> 
+	<!-- //cart-js -->	
+	<!-- countdown.js -->	
+	<script src="../js/jquery.knob.js"></script>
+	<script src="../js/jquery.throttle.js"></script>
+	<script src="../js/jquery.classycountdown.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#countdown1').ClassyCountdown({
+					end: '1388268325',
+					now: '1387999995',
+					labels: true,
+					style: {
+						element: "",
+						textResponsive: .5,
+						days: {
+							gauge: {
+								thickness: .10,
+								bgColor: "rgba(0,0,0,0)",
+								fgColor: "#1abc9c",
+								lineCap: 'round'
+							},
+							textCSS: 'font-weight:300; color:#fff;'
+						},
+						hours: {
+							gauge: {
+								thickness: .10,
+								bgColor: "rgba(0,0,0,0)",
+								fgColor: "#05BEF6",
+								lineCap: 'round'
+							},
+							textCSS: ' font-weight:300; color:#fff;'
+						},
+						minutes: {
+							gauge: {
+								thickness: .10,
+								bgColor: "rgba(0,0,0,0)",
+								fgColor: "#8e44ad",
+								lineCap: 'round'
+							},
+							textCSS: ' font-weight:300; color:#fff;'
+						},
+						seconds: {
+							gauge: {
+								thickness: .10,
+								bgColor: "rgba(0,0,0,0)",
+								fgColor: "#f39c12",
+								lineCap: 'round'
+							},
+							textCSS: ' font-weight:300; color:#fff;'
+						}
+
+					},
+					onEndCallback: function() {
+						console.log("Time out!");
+					}
+				});
+			});
+		</script>
+	<!-- //countdown.js -->
+	<!-- menu js aim -->
+	<script src="../js/jquery.menu-aim.js"> </script>
+	<script src="../js/main.js"></script> <!-- Resource jQuery -->
+	<!-- //menu js aim --> 
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster --> 
 	
 </body>
 </html>

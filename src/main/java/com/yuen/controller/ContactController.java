@@ -21,9 +21,14 @@ public class ContactController {
 	@Autowired
 	private ContactService contactService;
 
+    @GetMapping("/admin")
+    public String index_admin(Model model) {
+        return "admin/index";
+    }
+	
     @GetMapping("/contact")
     public String index(Model model) {
-        model.addAttribute("contacts", contactService.findAll());
+        /*model.addAttribute("contacts", contactService.findAll());*/
         return "index";
     }
     
