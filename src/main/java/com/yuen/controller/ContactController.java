@@ -26,62 +26,62 @@ public class ContactController {
         return "admin/index";
     }
 	
-    @GetMapping("/contact")
+    @GetMapping("/market")
     public String index(Model model) {
         /*model.addAttribute("contacts", contactService.findAll());*/
         return "index";
     }
     
-    @GetMapping("/contact/create")
+    @GetMapping("/market/create")
     public String create(Model model) {
         model.addAttribute("contact", new Contact());
         return "form";
     }
     
-    @GetMapping("/contact/{id}/edit")
+    @GetMapping("/market/{id}/edit")
     public String edit(@PathVariable int id, Model model) {
         model.addAttribute("contact", contactService.findOne(id));
         return "form";
     }
     
-    @PostMapping("/contact/save")
+    @PostMapping("/market/save")
     public String save(@Valid Contact contact, BindingResult result, RedirectAttributes redirect) {
         if (result.hasErrors()) {
             return "form";
         }
         contactService.save(contact);
         redirect.addFlashAttribute("success", "Saved contact successfully!");
-        return "redirect:/contact";
+        return "redirect:/market";
     }
     
-    @GetMapping("/contact/{id}/delete")
+    @GetMapping("/market/{id}/delete")
     public String delete(@PathVariable int id, RedirectAttributes redirect) {
         contactService.delete(id);
         redirect.addFlashAttribute("success", "Deleted contact successfully!");
-        return "redirect:/contact";
+        return "redirect:/market";
      }
     
-    @GetMapping("/contact/search")
+    @GetMapping("/market/search")
     public String search(@RequestParam("q") String q, Model model) {
         if (q.equals("")) {
-            return "redirect:/contact";
+            return "redirect:/market";
         }
         
         model.addAttribute("contacts", contactService.search(q));
         return "list";
     }
     
-    @GetMapping("/contact/products")
+    @GetMapping("/market/products")
     public String products(Model model) {
         return "products";
     }
     
-    @GetMapping("/contact/single")
+    @GetMapping("/market/single")
     public String single(Model model) {
         return "single";
     }
     
-    @GetMapping("/contact/login")
+    @GetMapping("/market/login")
     public String login(Model model) {
         return "login";
     }
