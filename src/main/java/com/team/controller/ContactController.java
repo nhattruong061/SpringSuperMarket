@@ -1,4 +1,4 @@
-package com.yuen.controller;
+package com.team.controller;
 
 import javax.validation.Valid;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.yuen.domain.Contact;
-import com.yuen.service.ContactService;
+import com.team.domain.Contact;
+import com.team.service.ContactService;
 
 @Controller
 public class ContactController {

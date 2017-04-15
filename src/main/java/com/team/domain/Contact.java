@@ -1,4 +1,4 @@
-package com.yuen.domain;
+package com.team.domain;
 
 import java.io.Serializable;
 

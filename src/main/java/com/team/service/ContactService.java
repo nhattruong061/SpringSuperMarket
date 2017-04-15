@@ -1,8 +1,8 @@
-package com.yuen.service;
+package com.team.service;
 
 import java.util.List;
 
-import com.yuen.domain.Contact;
+import com.team.domain.Contact;
 
 public interface ContactService {
 
