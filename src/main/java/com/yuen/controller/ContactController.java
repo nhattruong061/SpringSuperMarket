@@ -25,7 +25,12 @@ public class ContactController {
     public String index_admin(Model model) {
         return "admin/index";
     }
-	
+
+    @GetMapping("/admin/login")
+    public String admin_login(Model model) {
+        return "admin/login";
+    }
+    
     @GetMapping("/market")
     public String index(Model model) {
         /*model.addAttribute("contacts", contactService.findAll());*/
@@ -85,5 +90,5 @@ public class ContactController {
     public String login(Model model) {
         return "login";
     }
-    
+
 }
