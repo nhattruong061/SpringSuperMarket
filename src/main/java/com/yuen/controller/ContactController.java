@@ -70,5 +70,20 @@ public class ContactController {
         model.addAttribute("contacts", contactService.search(q));
         return "list";
     }
-
+    
+    @GetMapping("/contact/products")
+    public String products(Model model) {
+        return "products";
+    }
+    
+    @GetMapping("/contact/single")
+    public String single(Model model) {
+        return "single";
+    }
+    
+    @GetMapping("/contact/login")
+    public String login(Model model) {
+        return "login";
+    }
+    
 }
