@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2017 at 04:03 PM
+-- Generation Time: Apr 16, 2017 at 05:49 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -64,6 +64,13 @@ CREATE TABLE `product` (
   `created` date NOT NULL COMMENT 'ngày khỏi tạo',
   `modified` date NOT NULL COMMENT 'ngày chỉnh sửa thông tin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `price`, `price_unit`, `type`, `is_sale`, `is_offer`, `id_coupon`, `images`, `main_image`, `description`, `processing_time`, `addtional_info`, `view`, `created`, `modified`) VALUES
+(1, 'sp_test1', 1, 1, 1, 1, 1, 1, 'test.png', 'test.png', 'test', 'test', 'test', 1, '2017-04-03', '2017-04-11');
 
 -- --------------------------------------------------------
 
@@ -190,7 +197,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `product_rating`
 --
