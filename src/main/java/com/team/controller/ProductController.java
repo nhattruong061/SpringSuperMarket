@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.team.domain.Contact;
 import com.team.domain.Product;
 import com.team.service.ProductService;
-import com.team.service.UserService;
+
 
 @Controller
 public class ProductController {
@@ -27,6 +26,28 @@ public class ProductController {
     public String index(Model model) {
         model.addAttribute("products", productService.findAll());
     	return "/admin/product";
+    }
+
+    @GetMapping("/admin/product/create")
+    public String create(Model model) {
+    	model.addAttribute("product", new Product());
+        return "/admin/product_form";
+    }
+    
+    @GetMapping("/admin/product/{id}/edit")
+    public String edit(@PathVariable int id, Model model) {
+        model.addAttribute("product", productService.findOne(id));
+        return "/admin/product_form";
+    }
+    
+    @PostMapping("/admin/product/save")
+    public String save(@Valid Product product, BindingResult result, RedirectAttributes redirect) {
+        if (result.hasErrors()) {
+            return "/admin/product_form";
+        }
+        productService.save(product);
+        redirect.addFlashAttribute("success", "Saved contact successfully!");
+        return "redirect:/admin/product";
     }
     
     @GetMapping("/admin/product/{id}/delete")

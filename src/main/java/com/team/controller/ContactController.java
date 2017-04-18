@@ -25,6 +25,7 @@ public class ContactController {
     public String index_admin(Model model) {
         return "admin/index";
     }
+    
 
     @GetMapping("/admin/login")
     public String admin_login(Model model) {
