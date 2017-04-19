@@ -25,7 +25,7 @@ public class ContactController {
     public String index_admin(Model model) {
         return "admin/index";
     }
-
+    
     @GetMapping("/admin/login")
     public String admin_login(Model model) {
         return "admin/login";
@@ -42,7 +42,50 @@ public class ContactController {
         model.addAttribute("contact", new Contact());
         return "form";
     }
-    
+    @GetMapping("/market/help")
+    public String help(Model model) {
+        return "help";
+    }
+    @GetMapping("/market/card")
+    public String card(Model model) {
+        return "card";
+    }
+    @GetMapping("/market/contact")
+    public String contact(Model model) {
+        return "contact";
+    }
+    @GetMapping("/market/about")
+    public String about(Model model) {
+        return "about";
+    }
+    @GetMapping("/market/faq")
+    public String faq(Model model) {
+        return "faq";
+    }
+    @GetMapping("/market/marketplace")
+    public String marketplace(Model model) {
+        return "marketplace";
+    }
+    @GetMapping("/market/offers")
+    public String offers(Model model) {
+        return "offers";
+    }
+    @GetMapping("/market/privacy")
+    public String privacy(Model model) {
+        return "privacy";
+    }
+    @GetMapping("/market/signup")
+    public String signup(Model model) {
+        return "signup";
+    }
+    @GetMapping("/market/sitemap")
+    public String sitemap(Model model) {
+        return "sitemap";
+    }
+    @GetMapping("/market/value")
+    public String value(Model model) {
+        return "value";
+    }
     @GetMapping("/market/{id}/edit")
     public String edit(@PathVariable int id, Model model) {
         model.addAttribute("contact", contactService.findOne(id));
@@ -90,5 +133,4 @@ public class ContactController {
     public String login(Model model) {
         return "login";
     }
-
 }
