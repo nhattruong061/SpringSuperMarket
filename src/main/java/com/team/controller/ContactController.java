@@ -26,10 +26,6 @@ public class ContactController {
         return "admin/index";
     }
     
-<<<<<<< HEAD
-=======
-
->>>>>>> bd3c6838d4146310e89dee6c49fdc84138845d5f
     @GetMapping("/admin/login")
     public String admin_login(Model model) {
         return "admin/login";
