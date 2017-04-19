@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Implementation-Title: SpringMyContact
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: MyPC
-Implementation-Vendor-Id: com.yuen.spring
+Built-By: Duc Dynamo
+Implementation-Vendor-Id: com.team.spring
 Build-Jdk: 1.8.0_121
-Implementation-URL: http://projects.spring.io/spring-boot/mycontact/
+Implementation-URL: http://projects.spring.io/spring-boot/mymarket/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
 

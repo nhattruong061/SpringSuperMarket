@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout_admin :: head"></head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+
+<body>
+<body class="sticky-header left-side-collapsed" id="left_click">
+<script type="text/javascript">
+/* hàm này chưa xử lí xong có tác dụng mở rộng thanh menu trái,đang tìm đối tượng click phù hợp. có thể do lỗi 
+ở hàm call trong jquery mà không chạy*/
+$('.toggle-btn').on('click', function (e) {
+	e.preventDefault();
+	if($('#left_click').hasClass("left-side-collapsed")){
+			$('#left_click').attr('class', "sticky-header");
+	}else{
+		$('#left_click').attr('class', "sticky-header left-side-collapsed");
+	}
+});
+</script>
+    <section>
+    <!-- left side start-->
+    <div th:replace="layout_admin :: left_side"></div>
+    <!-- main content start-->
+	<div class="main-content">
+		<div th:replace="layout_admin :: header-section"></div>
+		<!-- đây là phần chính của page này -->
+		<div id="page-wrapper">
+			<div class="graphs">
+				<h3 class="blank1">Product</h3>
+				<div class="tab-content">
+					<div class="tab-pane active" id="horizontal-form">
+						<form class="form-horizontal" action="#" th:action="@{/admin/product/save}" th:object="${product}"
+		    method="POST" novalidate="novalidate" name="product_form">
+		    				<input type="hidden" th:field="*{id}" />
+							<div class="form-group">
+								<label for="focusedinput" class="col-sm-2 control-label">Name</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{name}" th:errorclass="field-error"/>
+									<em th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></em>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="focusedinput" class="col-sm-2 control-label">Price</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{price}" th:errorclass="field-error"/>
+									<em th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></em>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="selector1" class="col-sm-2 control-label">Price Unit</label>
+								<div class="col-sm-8">
+									<select name="selector1" id="selector1" class="form-control1">
+										<option>Lorem ipsum dolor sit amet.</option>
+										<option>Dolore, ab unde modi est!</option>
+										<option>Illum, fuga minus sit eaque.</option>
+										<option>Consequatur ducimus maiores voluptatum minima.</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="selector1" class="col-sm-2 control-label">Type</label>
+								<div class="col-sm-8">
+									<select name="selector1" id="selector1" class="form-control1">
+										<option>Lorem ipsum dolor sit amet.</option>
+										<option>Dolore, ab unde modi est!</option>
+										<option>Illum, fuga minus sit eaque.</option>
+										<option>Consequatur ducimus maiores voluptatum minima.</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="selector1" class="col-sm-2 control-label">Sale</label>
+								<div class="col-sm-8">
+									<select name="selector1" id="selector1" class="form-control1">
+										<option>Lorem ipsum dolor sit amet.</option>
+										<option>Dolore, ab unde modi est!</option>
+										<option>Illum, fuga minus sit eaque.</option>
+										<option>Consequatur ducimus maiores voluptatum minima.</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="selector1" class="col-sm-2 control-label">Offer</label>
+								<div class="col-sm-8">
+									<select name="selector1" id="selector1" class="form-control1">
+										<option>Lorem ipsum dolor sit amet.</option>
+										<option>Dolore, ab unde modi est!</option>
+										<option>Illum, fuga minus sit eaque.</option>
+										<option>Consequatur ducimus maiores voluptatum minima.</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Coupon</label>
+								<div class="col-sm-8">
+									<select multiple="" class="form-control1">
+										<option>Option 1</option>
+										<option>Option 2</option>
+										<option>Option 3</option>
+										<option>Option 4</option>
+										<option>Option 5</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputFile" class="col-sm-2 control-label">Images</label>
+								<div class="col-sm-8">
+									<input type="file" id="exampleInputFile"/>
+								</div>
+						  	</div>
+							<div class="form-group">
+								<label for="txtarea1" class="col-sm-2 control-label">Description</label>
+								<div class="col-sm-8">
+									<textarea name="txtarea1" id="txtarea1" cols="50" rows="4" class="form-control1" th:field="*{description}" th:errorclass="field-error">
+									</textarea>
+									<em th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></em>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="txtarea1" class="col-sm-2 control-label">Addtional Info</label>
+								<div class="col-sm-8">
+									<textarea name="txtarea1" id="txtarea1" cols="50" rows="4" class="form-control1" th:field="*{addtional_info}" th:errorclass="field-error">
+										
+									</textarea>
+									<em th:if="${#fields.hasErrors('addtional_info')}" th:errors="*{addtional_info}"></em>
+								</div>
+							</div>
+						  	<div class="panel-footer">
+								<div class="row">
+									<div class="col-sm-8 col-sm-offset-2">
+										<button class="btn-success btn">Save</button>
+									</div>
+								</div>
+						 	</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--  //end phần chính của page-->
+	</div>
+	<!--  footer-->
+    <footer th:replace="layout_admin :: footer"></footer>
+    <!--  //footer-->
+    </section>
+</body>
+</body>
+</html>
+
+			
