@@ -6,8 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-
-<body>
 <body class="sticky-header left-side-collapsed" id="left_click">
 <script type="text/javascript">
 /* hàm này chưa xử lí xong có tác dụng mở rộng thanh menu trái,đang tìm đối tượng click phù hợp. có thể do lỗi 
@@ -21,6 +19,7 @@ $('.toggle-btn').on('click', function (e) {
 	}
 });
 </script>
+
     <section>
     <!-- left side start-->
     <div th:replace="layout_admin :: left_side"></div>
@@ -39,96 +38,105 @@ $('.toggle-btn').on('click', function (e) {
 							<div class="form-group">
 								<label for="focusedinput" class="col-sm-2 control-label">Name</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{name}" th:errorclass="field-error"/>
+									<input type="text" class="form-control1" name="name" id="name" placeholder="Default Input" th:field="*{name}" th:errorclass="field-error"/>
 									<em th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></em>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="focusedinput" class="col-sm-2 control-label">Price</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{price}" th:errorclass="field-error"/>
+									<input type="number" class="form-control1" name="price" id="price" placeholder="Default Input" th:field="*{price}" th:errorclass="field-error"/>
 									<em th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></em>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="selector1" class="col-sm-2 control-label">Price Unit</label>
+								<label for="focusedinput" class="col-sm-2 control-label">Price Unit</label>
 								<div class="col-sm-8">
-									<select name="selector1" id="selector1" class="form-control1">
-										<option>Lorem ipsum dolor sit amet.</option>
-										<option>Dolore, ab unde modi est!</option>
-										<option>Illum, fuga minus sit eaque.</option>
-										<option>Consequatur ducimus maiores voluptatum minima.</option>
-									</select>
+									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{price_unit}" th:errorclass="field-error"/>
+									<em th:if="${#fields.hasErrors('price_unit')}" th:errors="*{price_unit}"></em>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="selector1" class="col-sm-2 control-label">Type</label>
+								<label for="focusedinput" class="col-sm-2 control-label">Type</label>
 								<div class="col-sm-8">
-									<select name="selector1" id="selector1" class="form-control1">
-										<option>Lorem ipsum dolor sit amet.</option>
-										<option>Dolore, ab unde modi est!</option>
-										<option>Illum, fuga minus sit eaque.</option>
-										<option>Consequatur ducimus maiores voluptatum minima.</option>
-									</select>
+									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{type}" th:errorclass="field-error"/>
+									<em th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></em>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="selector1" class="col-sm-2 control-label">Sale</label>
+								<label for="focusedinput" class="col-sm-2 control-label">Sale</label>
 								<div class="col-sm-8">
-									<select name="selector1" id="selector1" class="form-control1">
-										<option>Lorem ipsum dolor sit amet.</option>
-										<option>Dolore, ab unde modi est!</option>
-										<option>Illum, fuga minus sit eaque.</option>
-										<option>Consequatur ducimus maiores voluptatum minima.</option>
-									</select>
+									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{is_sale}" th:errorclass="field-error"/>
+									<em th:if="${#fields.hasErrors('is_sale')}" th:errors="*{is_sale}"></em>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="selector1" class="col-sm-2 control-label">Offer</label>
+								<label for="focusedinput" class="col-sm-2 control-label">Offer</label>
 								<div class="col-sm-8">
-									<select name="selector1" id="selector1" class="form-control1">
-										<option>Lorem ipsum dolor sit amet.</option>
-										<option>Dolore, ab unde modi est!</option>
-										<option>Illum, fuga minus sit eaque.</option>
-										<option>Consequatur ducimus maiores voluptatum minima.</option>
-									</select>
+									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{is_offer}" th:errorclass="field-error"/>
+									<em th:if="${#fields.hasErrors('is_offer')}" th:errors="*{is_offer}"></em>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">Coupon</label>
+								<label for="focusedinput" class="col-sm-2 control-label">Coupon</label>
 								<div class="col-sm-8">
-									<select multiple="" class="form-control1">
-										<option>Option 1</option>
-										<option>Option 2</option>
-										<option>Option 3</option>
-										<option>Option 4</option>
-										<option>Option 5</option>
-									</select>
+									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{id_coupon}" th:errorclass="field-error"/>
+									<em th:if="${#fields.hasErrors('id_coupon')}" th:errors="*{id_coupon}"></em>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="exampleInputFile" class="col-sm-2 control-label">Images</label>
+								<label for="focusedinput" class="col-sm-2 control-label">Images</label>
 								<div class="col-sm-8">
-									<input type="file" id="exampleInputFile"/>
+									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{images}" th:errorclass="field-error"/>
+									<em th:if="${#fields.hasErrors('images')}" th:errors="*{images}"></em>
 								</div>
-						  	</div>
+							</div>
+							<div class="form-group">
+								<label for="focusedinput" class="col-sm-2 control-label">Main Images</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{main_image}" th:errorclass="field-error"/>
+									<em th:if="${#fields.hasErrors('main_image')}" th:errors="*{main_image}"></em>
+								</div>
+							</div>
 							<div class="form-group">
 								<label for="txtarea1" class="col-sm-2 control-label">Description</label>
 								<div class="col-sm-8">
-									<textarea name="txtarea1" id="txtarea1" cols="50" rows="4" class="form-control1" th:field="*{description}" th:errorclass="field-error">
+									<textarea name="description" id="description" cols="50" rows="4" class="form-control1" th:field="*{description}" th:errorclass="field-error">
 									</textarea>
 									<em th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></em>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="txtarea1" class="col-sm-2 control-label">Addtional Info</label>
+								<label for="txtarea1" class="col-sm-2 control-label">Processing Time</label>
 								<div class="col-sm-8">
-									<textarea name="txtarea1" id="txtarea1" cols="50" rows="4" class="form-control1" th:field="*{addtional_info}" th:errorclass="field-error">
-										
+									<textarea name="processing_time" id="processing_time" cols="50" rows="4" class="form-control1" th:field="*{processing_time	}" th:errorclass="field-error">
+									</textarea>
+									<em th:if="${#fields.hasErrors('processing_time')}" th:errors="*{processing_time}"></em>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="txtarea1" class="col-sm-2 control-label">Addtional info</label>
+								<div class="col-sm-8">
+									<textarea name="addtional_info" id="addtional_info" cols="50" rows="4" class="form-control1" th:field="*{addtional_info}" th:errorclass="field-error">
 									</textarea>
 									<em th:if="${#fields.hasErrors('addtional_info')}" th:errors="*{addtional_info}"></em>
 								</div>
 							</div>
+							<input type="hidden" th:field="*{created}" name="created" id="created" />
+							<input type="hidden" name="modified" id="modified" />
+							<!--  <div class="form-group">
+								<label for="focusedinput" class="col-sm-2 control-label">Created</label>
+								<div class="col-sm-8">
+									<input type="date" class="form-control1" name="created" id="created" placeholder="Default Input" th:field="*{created}" th:errorclass="field-error" readonly="true"/>
+									<em th:if="${#fields.hasErrors('created')}" th:errors="*{create}"></em>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="focusedinput" class="col-sm-2 control-label">Modified</label>
+								<div class="col-sm-8">
+									<input type="date" class="form-control1" name="modified" id="modified" placeholder="Default Input" readonly="true"/>
+								</div>
+							</div>-->
 						  	<div class="panel-footer">
 								<div class="row">
 									<div class="col-sm-8 col-sm-offset-2">
@@ -147,8 +155,25 @@ $('.toggle-btn').on('click', function (e) {
     <footer th:replace="layout_admin :: footer"></footer>
     <!--  //footer-->
     </section>
+    <!-- set ngay cho created and modified -->
+    <script type="text/javascript">
+    	var dt = new Date();
+    	var ngay = dt.getDate();
+    	var thang = dt.getMonth();
+    	var thangs=  ["01","02","03","04","05","06","07","08","09","10","11","12"];
+    	var nam = dt.getFullYear();
+   		//document.getElementById("myDate").value = "2013-12-"+n;
+    	var ktmodified=document.getElementById("modified").value;
+    	if(ktmodified==''){
+    		document.getElementById("modified").value = nam+"-"+thangs[thang]+"-"+ngay;
+    	}
+    	var ktCreated=document.getElementById("created").value;
+    	if(ktCreated==''){
+    		document.getElementById("created").value = nam+"-"+thangs[thang]+"-"+ngay;
+    	}
+	</script>
 </body>
-</body>
+
 </html>
 
 			

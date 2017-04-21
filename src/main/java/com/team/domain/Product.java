@@ -22,49 +22,49 @@ public class Product implements Serializable{
 	 @Column(name = "id", nullable = false)
 	 private int id;
 	 
-	 @Column(name = "name", nullable = false)
+	 @Column(name = "name")
 	 private String name;
 	 
-	 @Column(name = "price", nullable = false)
+	 @Column(name = "price")
 	 private int price;
 	 
-	 @Column(name = "price_unit", nullable = false)
+	 @Column(name = "price_unit")
 	 private int price_unit;
 	 
-	 @Column(name = "type", nullable = false)
+	 @Column(name = "type")
 	 private int type;
 	 
-	 @Column(name = "is_sale", nullable = false)
+	 @Column(name = "is_sale")
 	 private int is_sale;
 	 
-	 @Column(name = "is_offer", nullable = false)
+	 @Column(name = "is_offer")
 	 private int is_offer;
 	 
-	 @Column(name = "id_coupon", nullable = false)
+	 @Column(name = "id_coupon")
 	 private int id_coupon;
 	 
-	 @Column(name = "images", nullable = false)
+	 @Column(name = "images")
 	 private String images;
 	 
-	 @Column(name = "main_image", nullable = false)
+	 @Column(name = "main_image")
 	 private String main_image;
 	 
-	 @Column(name = "description", nullable = false)
+	 @Column(name = "description")
 	 private String description;
 	 
-	 @Column(name = "processing_time", nullable = false)
+	 @Column(name = "processing_time")
 	 private String processing_time;
 	 
-	 @Column(name = "addtional_info", nullable = false)
+	 @Column(name = "addtional_info")
 	 private String addtional_info;
 	 
-	 @Column(name = "view", nullable = false)
+	 @Column(name = "view")
 	 private int view;
 	 
-	 @Column(name = "created", nullable = false)
+	 @Column(name = "created")
 	 private String created;
 	 
-	 @Column(name = "modified", nullable = false)
+	 @Column(name = "modified")
 	 private String modified;
 	 
 	 public Product() {
@@ -73,7 +73,7 @@ public class Product implements Serializable{
 
 	public Product(int id, String name, int price, int price_unit, int type, int is_sale, 
 			int is_offer, int id_coupon, String images, String main_image, String desciption, 
-			String processing_time, String addtional_info, int view,  String created, String modified) {
+			 String created, String modified) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -86,9 +86,6 @@ public class Product implements Serializable{
 		this.images=images;
 		this.main_image=main_image;
 		this.description=desciption;
-		this.processing_time=processing_time;
-		this.addtional_info=addtional_info;
-		this.view=view;
 		this.created = created;
 		this.modified = modified;
 	}
@@ -115,6 +112,14 @@ public class Product implements Serializable{
 	
 	public void setPrice(int price){
 		this.price=price;
+	}
+	
+	public int getPrice_unit(){
+		return price_unit;
+	}
+	
+	public void setPrice_unit(int price_unit){
+		this.price_unit=price_unit;
 	}
 	
 	public int getType(){
@@ -185,7 +190,7 @@ public class Product implements Serializable{
 		return addtional_info;
 	}
 	
-	public void setAddtional(String addtional_info){
+	public void setAddtional_info(String addtional_info){
 		this.addtional_info=addtional_info;
 	}
 	
