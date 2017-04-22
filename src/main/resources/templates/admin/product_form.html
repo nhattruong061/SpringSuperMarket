@@ -50,30 +50,44 @@ $('.toggle-btn').on('click', function (e) {
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="focusedinput" class="col-sm-2 control-label">Price Unit</label>
+								<label for="selector1" class="col-sm-2 control-label">Price Unit</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{price_unit}" th:errorclass="field-error"/>
+									<select name="price_unit" id="price_unit" class="form-control1" th:field="*{price_unit}" th:errorclass="field-error">
+										<option value="1">VNĐ</option>
+										<option value="2">$</option>
+									</select>
 									<em th:if="${#fields.hasErrors('price_unit')}" th:errors="*{price_unit}"></em>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="focusedinput" class="col-sm-2 control-label">Type</label>
+								<label for="selector1" class="col-sm-2 control-label">Type</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{type}" th:errorclass="field-error"/>
+									<select name="type" id="type" class="form-control1" th:field="*{type}" th:errorclass="field-error">
+										<option value="1">Linh kiện</option>
+										<option value="2">Trang trí</option>
+									</select>
 									<em th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></em>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="focusedinput" class="col-sm-2 control-label">Sale</label>
+								<label for="selector1" class="col-sm-2 control-label">Sale</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{is_sale}" th:errorclass="field-error"/>
+									<select name="is_sale" id="is_sale" class="form-control1" th:field="*{is_sale}" th:errorclass="field-error">
+										<option value="1">10%</option>
+										<option value="2">20%</option>
+										<option value="3">30%</option>
+										<option value="4">40%</option>
+									</select>
 									<em th:if="${#fields.hasErrors('is_sale')}" th:errors="*{is_sale}"></em>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="focusedinput" class="col-sm-2 control-label">Offer</label>
+								<label for="selector1" class="col-sm-2 control-label">Offer</label>
 								<div class="col-sm-8">
-									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{is_offer}" th:errorclass="field-error"/>
+									<select name="is_offer" id="is_offer" class="form-control1" th:field="*{is_offer}" th:errorclass="field-error">
+										<option value="1">Yes</option>
+										<option value="2">No</option>
+									</select>
 									<em th:if="${#fields.hasErrors('is_offer')}" th:errors="*{is_offer}"></em>
 								</div>
 							</div>
@@ -84,7 +98,7 @@ $('.toggle-btn').on('click', function (e) {
 									<em th:if="${#fields.hasErrors('id_coupon')}" th:errors="*{id_coupon}"></em>
 								</div>
 							</div>
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label for="focusedinput" class="col-sm-2 control-label">Images</label>
 								<div class="col-sm-8">
 									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{images}" th:errorclass="field-error"/>
@@ -97,7 +111,21 @@ $('.toggle-btn').on('click', function (e) {
 									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{main_image}" th:errorclass="field-error"/>
 									<em th:if="${#fields.hasErrors('main_image')}" th:errors="*{main_image}"></em>
 								</div>
-							</div>
+							</div>-->
+							<div class="form-group">
+								<label for="focusedinput" class="col-sm-2 control-label">Images</label>
+								<div class="col-sm-8">
+									<input type="file" id="exampleInputFile" multiple="true" th:field="*{images}" th:errorclass="field-error"/>
+									<em th:if="${#fields.hasErrors('images')}" th:errors="*{images}"></em>
+								</div>
+						  	</div>
+							<div class="form-group">
+								<label for="focusedinput" class="col-sm-2 control-label">Main Image</label>
+								<div class="col-sm-8">
+									<input type="file" id="exampleInputFile" th:field="*{main_image}" th:errorclass="field-error"/>
+									<em th:if="${#fields.hasErrors('main_image')}" th:errors="*{main_image}"></em>
+								</div>
+						  	</div>
 							<div class="form-group">
 								<label for="txtarea1" class="col-sm-2 control-label">Description</label>
 								<div class="col-sm-8">
@@ -109,7 +137,7 @@ $('.toggle-btn').on('click', function (e) {
 							<div class="form-group">
 								<label for="txtarea1" class="col-sm-2 control-label">Processing Time</label>
 								<div class="col-sm-8">
-									<textarea name="processing_time" id="processing_time" cols="50" rows="4" class="form-control1" th:field="*{processing_time	}" th:errorclass="field-error">
+									<textarea name="processing_time" id="processing_time" cols="50" rows="4" class="form-control1" th:field="*{processing_time}" th:errorclass="field-error">
 									</textarea>
 									<em th:if="${#fields.hasErrors('processing_time')}" th:errors="*{processing_time}"></em>
 								</div>
@@ -124,19 +152,6 @@ $('.toggle-btn').on('click', function (e) {
 							</div>
 							<input type="hidden" th:field="*{created}" name="created" id="created" />
 							<input type="hidden" name="modified" id="modified" />
-							<!--  <div class="form-group">
-								<label for="focusedinput" class="col-sm-2 control-label">Created</label>
-								<div class="col-sm-8">
-									<input type="date" class="form-control1" name="created" id="created" placeholder="Default Input" th:field="*{created}" th:errorclass="field-error" readonly="true"/>
-									<em th:if="${#fields.hasErrors('created')}" th:errors="*{create}"></em>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="focusedinput" class="col-sm-2 control-label">Modified</label>
-								<div class="col-sm-8">
-									<input type="date" class="form-control1" name="modified" id="modified" placeholder="Default Input" readonly="true"/>
-								</div>
-							</div>-->
 						  	<div class="panel-footer">
 								<div class="row">
 									<div class="col-sm-8 col-sm-offset-2">

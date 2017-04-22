@@ -73,7 +73,7 @@ public class Product implements Serializable{
 
 	public Product(int id, String name, int price, int price_unit, int type, int is_sale, 
 			int is_offer, int id_coupon, String images, String main_image, String desciption, 
-			 String created, String modified) {
+			String processing_time,String addtional_info, String created, String modified) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -86,6 +86,8 @@ public class Product implements Serializable{
 		this.images=images;
 		this.main_image=main_image;
 		this.description=desciption;
+		this.processing_time=processing_time;
+		this.addtional_info=addtional_info;
 		this.created = created;
 		this.modified = modified;
 	}
