@@ -33,7 +33,7 @@ $('.toggle-btn').on('click', function (e) {
 				<div class="tab-content">
 					<div class="tab-pane active" id="horizontal-form">
 						<form class="form-horizontal" action="#" th:action="@{/admin/product/save}" th:object="${product}"
-		    method="POST" novalidate="novalidate" name="product_form">
+		    method="POST" name="product_form" id="product_form">
 		    				<input type="hidden" th:field="*{id}" />
 							<div class="form-group">
 								<label for="focusedinput" class="col-sm-2 control-label">Name</label>
@@ -98,34 +98,6 @@ $('.toggle-btn').on('click', function (e) {
 									<em th:if="${#fields.hasErrors('id_coupon')}" th:errors="*{id_coupon}"></em>
 								</div>
 							</div>
-							<!-- <div class="form-group">
-								<label for="focusedinput" class="col-sm-2 control-label">Images</label>
-								<div class="col-sm-8">
-									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{images}" th:errorclass="field-error"/>
-									<em th:if="${#fields.hasErrors('images')}" th:errors="*{images}"></em>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="focusedinput" class="col-sm-2 control-label">Main Images</label>
-								<div class="col-sm-8">
-									<input type="text" class="form-control1" id="focusedinput" placeholder="Default Input" th:field="*{main_image}" th:errorclass="field-error"/>
-									<em th:if="${#fields.hasErrors('main_image')}" th:errors="*{main_image}"></em>
-								</div>
-							</div>-->
-							<div class="form-group">
-								<label for="focusedinput" class="col-sm-2 control-label">Images</label>
-								<div class="col-sm-8">
-									<input type="file" id="exampleInputFile" multiple="true" th:field="*{images}" th:errorclass="field-error"/>
-									<em th:if="${#fields.hasErrors('images')}" th:errors="*{images}"></em>
-								</div>
-						  	</div>
-							<div class="form-group">
-								<label for="focusedinput" class="col-sm-2 control-label">Main Image</label>
-								<div class="col-sm-8">
-									<input type="file" id="exampleInputFile" th:field="*{main_image}" th:errorclass="field-error"/>
-									<em th:if="${#fields.hasErrors('main_image')}" th:errors="*{main_image}"></em>
-								</div>
-						  	</div>
 							<div class="form-group">
 								<label for="txtarea1" class="col-sm-2 control-label">Description</label>
 								<div class="col-sm-8">
@@ -152,6 +124,25 @@ $('.toggle-btn').on('click', function (e) {
 							</div>
 							<input type="hidden" th:field="*{created}" name="created" id="created" />
 							<input type="hidden" name="modified" id="modified" />
+							<div class="form-group">
+								<label for="focusedinput" class="col-sm-2 control-label">Images</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control1" name="images" id="images" placeholder="Default Input" th:field="*{images}" th:errorclass="field-error"/>
+									<em th:if="${#fields.hasErrors('images')}" th:errors="*{images}"></em>
+									<div style="height: 5px;"></div>
+									<input type="hidden" name="extraField"/>
+									<input type="file" name="files" multiple="multiple" />
+									<div style="height: 5px;"></div>
+									<input type="submit" id="btnSubmitImages" value="Upload ảnh" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="focusedinput" class="col-sm-2 control-label">Main Image</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control1" name="main_image" id="main_image" placeholder="Default Input" th:field="*{main_image}" th:errorclass="field-error"/>
+									<em th:if="${#fields.hasErrors('main_image')}" th:errors="*{name}"></em>
+								</div>
+							</div>
 						  	<div class="panel-footer">
 								<div class="row">
 									<div class="col-sm-8 col-sm-offset-2">
@@ -166,6 +157,7 @@ $('.toggle-btn').on('click', function (e) {
 		</div>
 		<!--  //end phần chính của page-->
 	</div>
+	
 	<!--  footer-->
     <footer th:replace="layout_admin :: footer"></footer>
     <!--  //footer-->
@@ -186,6 +178,42 @@ $('.toggle-btn').on('click', function (e) {
     	if(ktCreated==''){
     		document.getElementById("created").value = nam+"-"+thangs[thang]+"-"+ngay;
     	}
+	</script>
+	<script type="text/javascript"
+        src="webjars/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function () {
+	    $("#btnSubmitImages").click(function (event) {
+	    	event.preventDefault();
+	        fire_ajax_submit();
+
+	    });
+	});
+
+	function fire_ajax_submit() {
+
+	    // Get form
+	    var form = $('#product_form')[0];
+	    var data = new FormData(form);
+
+	    data.append("CustomField", "This is some extra data, testing");
+
+	    $.ajax({
+	        type: "POST",
+	        url: "/api/upload/multi",
+	        data: data,
+	        //http://api.jquery.com/jQuery.ajax/
+	        //https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+	        processData: false, //prevent jQuery from automatically transforming the data into a query string
+	        contentType: false,
+	        cache: false,
+	        timeout: 600000,
+	        success: function (data) {
+	        	document.getElementById("images").value=data;
+	        },
+	    });
+
+	}
 	</script>
 </body>
 
