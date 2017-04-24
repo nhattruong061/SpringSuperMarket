@@ -30,7 +30,7 @@ $('.toggle-btn').on('click', function (e) {
 		<!-- đây là phần chính của page này -->
 		<div id="page-wrapper">
 				<div class="graphs">
-					<h3 class="blank1">Users Tables</h3>
+					<h3 class="blank1">Product Tables</h3>
 					 <div class="xs tabls">
 						<div class="bs-example4" data-example-id="contextual-table">
 						<!--  -->
@@ -42,6 +42,20 @@ $('.toggle-btn').on('click', function (e) {
 		    				<h3>No data to show</h3>
 						</th:block>
 						<th:block th:unless="${#lists.isEmpty(products)}">
+							<style>
+								.butnadd{
+									border: 1px solid #ccc;
+									border-radius:5px; 
+									padding:10px 15px;
+									font-size: 20px;
+									font-weight: bold;
+								}
+								.butnadd:HOVER{
+									background-color: #f0ad4e;
+									color: #ffffff;
+								}
+							</style>
+							<a th:href="@{/admin/product/create}" class="butnadd">+</a>
 							<table class="table">
 							  <thead>
 								<tr>
