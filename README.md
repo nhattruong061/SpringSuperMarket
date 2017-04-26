@@ -4,4 +4,4 @@ Simple CRUD app using:
 - Spring MVC 
 - Spring Data JPA 
 - Thymeleaf
-Team: Team những người đẹp trai.
+#Team: Team những người đẹp trai.
