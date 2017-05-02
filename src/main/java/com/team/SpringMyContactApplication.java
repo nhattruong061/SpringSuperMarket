@@ -15,6 +15,10 @@ public class SpringMyContactApplication extends SpringBootServletInitializer {
 	}
 	
 	public static void main(String[] args){
-		SpringApplication.run(SpringMyContactApplication.class, args);
+		try{
+			SpringApplication.run(SpringMyContactApplication.class, args);
+		}catch (Throwable t) {
+            System.err.println(t.getMessage());
+        }
 	}
 }

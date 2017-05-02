@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout_admin :: head"></head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+
+<body>
+<body class="sticky-header left-side-collapsed" id="left_click">
+<script type="text/javascript">
+/* hàm này chưa xử lí xong có tác dụng mở rộng thanh menu trái,đang tìm đối tượng click phù hợp. có thể do lỗi 
+ở hàm call trong jquery mà không chạy*/
+$('.toggle-btn').on('click', function (e) {
+	e.preventDefault();
+	if($('#left_click').hasClass("left-side-collapsed")){
+			$('#left_click').attr('class', "sticky-header");
+	}else{
+		$('#left_click').attr('class', "sticky-header left-side-collapsed");
+	}
+});
+</script>
+    <section>
+    <!-- left side start-->
+    <div th:replace="layout_admin :: left_side"></div>
+    <!-- main content start-->
+	<div class="main-content">
+		<div th:replace="layout_admin :: header-section"></div>
+		<!-- đây là phần chính của page này -->
+		<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1">Product Tables</h3>
+					 <div class="xs tabls">
+						<div class="bs-example4" data-example-id="contextual-table">
+						<!--  -->
+						<div th:if="${success}" class="row alert alert-success alert-dismissible">
+	        				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        				<span th:text="${success}"></span>
+	    				</div>
+						<th:block th:if="${#lists.isEmpty(productRatings)}">
+		    				<h3>No data to show</h3>
+						</th:block>
+						<th:block th:unless="${#lists.isEmpty(productRatings)}">
+							<style>
+								.butnadd{
+									border: 1px solid #ccc;
+									border-radius:5px; 
+									padding:10px 15px;
+									font-size: 20px;
+									font-weight: bold;
+								}
+								.butnadd:HOVER{
+									background-color: #f0ad4e;
+									color: #ffffff;
+								}
+							</style>
+							<a th:href="@{/admin/product_rating/create}" class="butnadd">+</a>
+							<table class="table">
+							  <thead>
+								<tr>
+								  <th>#</th>
+								  <th>ID Product</th>
+								  <th>ID User</th>
+								  <th>Rating</th>
+								  <th>Comment Title</th>
+								  <th>Comment Text</th>
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr th:each="productRating,item : ${productRatings}">
+								  <td th:text="${item.count}"></td>
+		                          <td th:text="${productRating.id_product}"></td>
+		                          <td th:text="${productRating.id_user}"></td>
+		                          <td th:text="${productRating.rating}"></td>
+		                          <td th:text="${productRating.comment_title}"></td>
+		                          <td th:text="${productRating.comment_text}"></td>
+		                          <td><a th:href="@{./product_rating/{id}/edit(id=${productRating.id})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+		                          <td><a th:href="@{./product_rating/{id}/delete(id=${productRating.id})}"><span class="glyphicon glyphicon-trash"></span></a></td>
+		                        </tr>
+							  </tbody>
+							</table>
+						</th:block>
+						<!--  -->
+					   </div>
+					 </div>
+				</div>
+			</div>
+		<!--  //end phần chính của page-->
+	</div>
+	<!--  footer-->
+    <footer th:replace="layout_admin :: footer"></footer>
+    <!--  //footer-->
+    </section>
+</body>
+</body>
+</html>
+
+			

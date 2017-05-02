@@ -6,7 +6,6 @@ import com.team.domain.Product;
 
 public interface ProductService {
 	
-
     Iterable<Product> findAll();
 
     List<Product> search(String q);
