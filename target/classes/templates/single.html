@@ -50,7 +50,7 @@
 							<input type="hidden" name="amount" value="540.00" th:value="${product.price}-(${product.price}*${product.is_sale})/100"> </input>
 							<button type="submit" class="w3ls-cart" ><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
 						</form>
-						<button class="w3ls-cart w3ls-cart-like" name="add_whishlist" id="add_whishlist"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</button>
+						<button class="w3ls-cart w3ls-cart-like" name="add_whishlist" id="add_whishlist" th:attr="data-id=${product.id}"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</button>
 					</div>
 				   <div class="clearfix"> </div>  
 				</div>
@@ -265,7 +265,36 @@
 <script type="text/javascript">
 	$(document).ready(function () {
 	    $("#add_whishlist").click(function (event) {
+	    	//nhom truong chua lam session, dinh menh.
+	    	var is_whishlist;
+	    	var is_has=0;
+	    	//ban dau phai chec thang nguoi dung da whislist hay chua neu roi tra ve ket qua 1 nguoc lai 0
+	    	//is_has=1 khi da co du lieu trong bang
+	    	//gan bien is_whishlist cho ket qua do nguoc lai(0>>1,1>>0)
+	    	var id_user=1;
+	    	var id_product=$(this).data("id");
+	    	//alert(id_product);
+	    	
+	    	$.ajax({
+		        type: "POST",
+		        url: "/admin/product_whishlist/create_single_page",
+		        data: {id_user,id_product,is_whishlist,is_has},
+		        //http://api.jquery.com/jQuery.ajax/
+		        //https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+		        processData: false, //prevent jQuery from automatically transforming the data into a query string
+		        contentType: false,
+		        cache: false,
+		        timeout: 60000,
+		        success: function (data) {
+		        	//console.log(data);
+			    	alert("dddd");
+		        },
+		    });
 	    });
 	});
+	    // This WILL work because we are listening on the 'document', 
+	    // for a click on an element with an ID of #test-element
+	    $(document).on("click","#test-element",function() {
+	    });
 </script>
 </html>

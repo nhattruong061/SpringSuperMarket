@@ -19,14 +19,14 @@ public class ProductWhishlist implements Serializable{
 	 @Column(name = "id", nullable = false)
 	 private int id;
 	 
-	 @Column(name = "id_product", nullable = false)
-	 private int id_product;
+	 @Column(name = "idProduct", nullable = false)
+	 private int idProduct;
 	 
-	 @Column(name = "id_user", nullable = false)
-	 private int id_user;
+	 @Column(name = "idUser", nullable = false)
+	 private int idUser;
 	 
-	 @Column(name = "is_whishlist", nullable = false)
-	 private int is_whishlist;
+	 @Column(name = "isWhishlist", nullable = false)
+	 private int isWhishlist;
 	 
 	 @Column(name = "created", nullable = false)
 	 private String created;
@@ -38,12 +38,21 @@ public class ProductWhishlist implements Serializable{
 		 super();
 	}
 
-	public ProductWhishlist(int id, int id_product, int id_user, int is_whishlist,  String created, String modified) {
+	public ProductWhishlist(int id, int idProduct, int idUser, int isWhishlist,  String created, String modified) {
 		super();
 		this.id = id;
-		this.id_product=id_product;
-		this.id_user=id_user;
-		this.is_whishlist=is_whishlist;
+		this.idProduct=idProduct;
+		this.idUser=idUser;
+		this.isWhishlist=isWhishlist;
+		this.created=created;
+		this.modified=modified;
+	}
+	
+	public ProductWhishlist(int idProduct, int idUser, int isWhishlist,  String created, String modified) {
+		super();
+		this.idProduct=idProduct;
+		this.idUser=idUser;
+		this.isWhishlist=isWhishlist;
 		this.created=created;
 		this.modified=modified;
 	}
@@ -57,27 +66,27 @@ public class ProductWhishlist implements Serializable{
 	}
 	
 	public int getId_product(){
-		return id_product;
+		return idProduct;
 	}
 	
 	public void setId_product(int id_product){
-		this.id_product =id_product;
+		this.idProduct =id_product;
 	}
 
 	public int getId_user(){
-		return id_user;
+		return idUser;
 	}
 	
 	public void setId_user(int id_user){
-		this.id_user =id_user;
+		this.idUser =id_user;
 	}
 	
 	public int getIs_whishlist(){
-		return is_whishlist;
+		return isWhishlist;
 	}
 	
 	public void setIs_whishlist(int is_whishlist){
-		this.is_whishlist =is_whishlist;
+		this.isWhishlist =is_whishlist;
 	}
 	
 	
