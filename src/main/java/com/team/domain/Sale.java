@@ -20,8 +20,8 @@ public class Sale implements Serializable{
 	 @Column(name = "id", nullable = false)
 	 private int id;
 	 
-	 @Column(name = "id_product", nullable = false)
-	 private int id_product;
+	 @Column(name = "idproduct", nullable = false)
+	 private int idproduct;
 	 
 	 @Column(name = "percent_sale", nullable = false)
 	 private int percent_sale;
@@ -45,7 +45,7 @@ public class Sale implements Serializable{
 	 public Sale(int id, int id_product, int percent_sale, String form_date, String to_date, String created, String modified){
 		 super();
 		 this.id=id;
-		 this.id_product=id_product;
+		 this.idproduct=id_product;
 		 this.percent_sale=percent_sale;
 		 this.form_date=form_date;
 		 this.to_date=to_date;
@@ -62,11 +62,11 @@ public class Sale implements Serializable{
 	 }
 	 
 	 public int getId_product(){
-		 return this.id_product;
+		 return this.idproduct;
 	 }
 	 
 	 public void setId_product(int id_product){
-		 this.id_product=id_product;
+		 this.idproduct=id_product;
 	 }
 	 
 	 public int getPercent_sale(){

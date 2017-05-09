@@ -1,6 +1,7 @@
 package com.team.controller;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,15 +13,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.jayway.jsonpath.internal.function.text.Length;
 import com.team.domain.Contact;
+import com.team.domain.Product;
+import com.team.domain.Sale;
 import com.team.service.ContactService;
+import com.team.service.ProductService;
+import com.team.service.SaleService;
 
 @Controller
 public class ContactController {
 	
 	@Autowired
 	private ContactService contactService;
-
+	@Autowired
+	private ProductService productService;
+	@Autowired
+	private SaleService saleService;
+	
     @GetMapping("/admin")
     public String index_admin(Model model) {
         return "admin/index";
@@ -121,11 +131,40 @@ public class ContactController {
     
     @GetMapping("/market/products")
     public String products(Model model) {
+    	model.addAttribute("products",productService.findAll());
         return "products";
     }
     
-    @GetMapping("/market/single")
-    public String single(Model model) {
+    @GetMapping("/market/{id}/single")
+    public String single(@PathVariable int id, Model model) throws Exception {
+    	Product p=new Product();
+    	p=productService.findOne(id);
+    	if(p.getIs_sale()==1)
+    	{
+    		Sale s=new Sale();
+    		s=saleService.findByIdproduct(p.getId());
+    		p.setIs_sale(s.getPercent_sale());
+    		model.addAttribute("product", p);
+    		model.addAttribute("end_sale_date", s.getTo_date());
+    	}
+    	else
+    	{
+    		model.addAttribute("product", p);
+    		model.addAttribute("end_sale_date", "null");
+    	}
+    	String p_price_unit="$";
+    	if(p.getPrice_unit()==1)
+    	{
+    		 p_price_unit=" VND";
+    	}
+    	String[] arrImage=p.getImages().split(",");
+    	for(int i=0;i<arrImage.length;i++)
+    	{
+    		arrImage[i]=arrImage[i].trim();
+    	}
+    	model.addAttribute("images",  arrImage);
+    	model.addAttribute("listPrType",  productService.findTop10ByType(p.getType()));
+    	model.addAttribute("product_price_unit",  p_price_unit);
         return "single";
     }
     

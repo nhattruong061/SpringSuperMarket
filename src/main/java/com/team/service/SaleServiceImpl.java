@@ -44,4 +44,10 @@ public class SaleServiceImpl implements SaleService{
 		saleRepository.delete(id);
 	}
 
+	@Override
+	public Sale findByIdproduct(int id) throws Exception{
+		// TODO Auto-generated method stub
+		return saleRepository.findByIdproduct(id) ;
+	}
+
 }

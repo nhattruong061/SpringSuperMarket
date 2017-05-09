@@ -11,6 +11,8 @@ public interface SaleService {
 	    List<Sale> search(int id);
 
 	    Sale findOne(int id);
+	    
+	    Sale findByIdproduct(int id) throws Exception;
 
 	    void save(Sale sale);
 

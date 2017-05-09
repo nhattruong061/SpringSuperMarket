@@ -10,4 +10,5 @@ import com.team.domain.Sale;
 public interface SaleRepository extends CrudRepository<Sale, Integer>{
 
 	 List<Sale> findById(int id);
+	 Sale findByIdproduct(int id) throws Exception;
 }

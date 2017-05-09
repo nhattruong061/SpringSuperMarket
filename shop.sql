@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2017 at 05:49 AM
+-- Generation Time: May 09, 2017 at 04:22 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -19,6 +19,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `shop`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cast`
+--
+
+CREATE TABLE `cast` (
+  `id` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `idProduct` int(11) NOT NULL,
+  `dateAdd` date NOT NULL,
+  `modified` date NOT NULL,
+  `created` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -48,21 +63,21 @@ INSERT INTO `contact` (`id`, `name`, `email`, `phone`) VALUES
 
 CREATE TABLE `product` (
   `id` int(11) NOT NULL,
-  `name` varchar(250) NOT NULL,
-  `price` int(11) NOT NULL,
-  `price_unit` int(11) NOT NULL COMMENT 'đơn vị tiền tệ: USD,VNĐ,..',
-  `type` tinyint(4) NOT NULL COMMENT 'loại sản phẩm:cong_nghe, thuc_an,...',
-  `is_sale` tinyint(4) NOT NULL,
-  `is_offer` tinyint(4) NOT NULL COMMENT '1 là có, 0 là không; để xác định sản phẩm có offer hay không. ',
-  `id_coupon` int(11) NOT NULL COMMENT 'id của sản phẩm hoặc coupon tặng kèm.',
-  `images` text NOT NULL COMMENT 'path của img sản phẩm',
-  `main_image` text NOT NULL COMMENT 'path img chính của sản phẩm',
-  `description` text NOT NULL COMMENT 'mô tả sản phẩm',
-  `processing_time` text NOT NULL COMMENT 'thời gian xử lí khi mua hàng: ví dụ chậm nhất 3 ngày',
-  `addtional_info` text NOT NULL COMMENT 'thông tin mô tả thêm về sản phẩm',
-  `view` int(11) NOT NULL COMMENT 'số lượt xem sản phẩm',
-  `created` date NOT NULL COMMENT 'ngày khỏi tạo',
-  `modified` date NOT NULL COMMENT 'ngày chỉnh sửa thông tin'
+  `name` varchar(250) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `price_unit` int(11) DEFAULT NULL COMMENT 'đơn vị tiền tệ: USD,VNĐ,..',
+  `type` tinyint(4) DEFAULT NULL COMMENT 'loại sản phẩm:cong_nghe, thuc_an,...',
+  `is_sale` tinyint(4) DEFAULT NULL,
+  `is_offer` tinyint(4) DEFAULT NULL COMMENT '1 là có, 0 là không; để xác định sản phẩm có offer hay không. ',
+  `id_coupon` int(11) DEFAULT NULL COMMENT 'id của sản phẩm hoặc coupon tặng kèm.',
+  `images` text COMMENT 'path của img sản phẩm',
+  `main_image` text COMMENT 'path img chính của sản phẩm',
+  `description` text COMMENT 'mô tả sản phẩm',
+  `processing_time` text COMMENT 'thời gian xử lí khi mua hàng: ví dụ chậm nhất 3 ngày',
+  `addtional_info` text COMMENT 'thông tin mô tả thêm về sản phẩm',
+  `view` int(11) DEFAULT NULL COMMENT 'số lượt xem sản phẩm',
+  `created` date DEFAULT NULL COMMENT 'ngày khỏi tạo',
+  `modified` date DEFAULT NULL COMMENT 'ngày chỉnh sửa thông tin'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -70,7 +85,21 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `price`, `price_unit`, `type`, `is_sale`, `is_offer`, `id_coupon`, `images`, `main_image`, `description`, `processing_time`, `addtional_info`, `view`, `created`, `modified`) VALUES
-(1, 'sp_test1', 1, 1, 1, 1, 1, 1, 'test.png', 'test.png', 'test', 'test', 'test', 1, '2017-04-03', '2017-04-11');
+(1, 'Hung oc cho', 100, 1, 2, 1, 1, 1, '1 (185).jpg , 1 (186).jpg , 1 (187).jpg', '1 (185).jpg', 'test', '7 day', 'test', 0, '2017-04-24', '2017-05-03'),
+(2, 'test2', 1000, 1, 1, 1, 1, 0, '1 (208).jpg', '1 (213).jpg', 'test2', '8', 'test2', 0, '2017-04-24', '2017-04-27'),
+(3, 'Hung oc cho', 100, 1, 2, 1, 1, 1, '1 (185).jpg , 1 (186).jpg , 1 (187).jpg', '1 (185).jpg', 'test', '7 day', 'test', 0, '2017-04-24', '2017-05-03'),
+(4, 'Hung oc cho', 100, 1, 2, 1, 1, 1, '1 (185).jpg , 1 (186).jpg , 1 (187).jpg', '1 (185).jpg', 'test', '7 day', 'test', 0, '2017-04-24', '2017-05-03'),
+(5, 'test2', 1000, 1, 1, 1, 1, 0, '1 (208).jpg', '1 (213).jpg', 'test2', '8', 'test2', 0, '2017-04-24', '2017-04-27'),
+(6, 'Hung oc cho', 100, 1, 2, 1, 1, 1, '1 (185).jpg , 1 (186).jpg , 1 (187).jpg', '1 (185).jpg', 'test', '7 day', 'test', 0, '2017-04-24', '2017-05-03'),
+(7, 'Hung oc cho', 100, 1, 2, 1, 1, 1, '1 (185).jpg , 1 (186).jpg , 1 (187).jpg', '1 (185).jpg', 'test', '7 day', 'test', 0, '2017-04-24', '2017-05-03'),
+(8, 'Hung oc cho', 100, 1, 2, 1, 1, 1, '1 (185).jpg , 1 (186).jpg , 1 (187).jpg', '1 (185).jpg', 'test', '7 day', 'test', 0, '2017-04-24', '2017-05-03'),
+(9, 'test2', 1000, 1, 1, 1, 1, 0, '1 (208).jpg', '1 (213).jpg', 'test2', '8', 'test2', 0, '2017-04-24', '2017-04-27'),
+(10, 'Hung oc cho', 100, 1, 2, 1, 1, 1, '1 (185).jpg , 1 (186).jpg , 1 (187).jpg', '1 (185).jpg', 'test', '7 day', 'test', 0, '2017-04-24', '2017-05-03'),
+(11, 'Hung oc cho', 100, 1, 2, 1, 1, 1, '1 (185).jpg , 1 (186).jpg , 1 (187).jpg', '1 (185).jpg', 'test', '7 day', 'test', 0, '2017-04-24', '2017-05-03'),
+(12, 'test2', 1000, 1, 1, 1, 1, 0, '1 (208).jpg', '1 (213).jpg', 'test2', '8', 'test2', 0, '2017-04-24', '2017-04-27'),
+(13, 'Hung oc cho', 100, 1, 2, 1, 1, 1, '1 (185).jpg , 1 (186).jpg , 1 (187).jpg', '1 (185).jpg', 'test', '7 day', 'test', 0, '2017-04-24', '2017-05-03'),
+(14, 'Hung oc cho', 100, 1, 2, 1, 1, 1, '1 (185).jpg , 1 (186).jpg , 1 (187).jpg', '1 (185).jpg', 'test', '7 day', 'test', 0, '2017-04-24', '2017-05-03'),
+(15, 'Hung oc cho', 100, 1, 2, 1, 1, 1, '1 (185).jpg , 1 (186).jpg , 1 (187).jpg', '1 (185).jpg', 'test', '7 day', 'test', 0, '2017-04-24', '2017-05-03');
 
 -- --------------------------------------------------------
 
@@ -89,6 +118,13 @@ CREATE TABLE `product_rating` (
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
+--
+-- Dumping data for table `product_rating`
+--
+
+INSERT INTO `product_rating` (`id`, `id_product`, `id_user`, `rating`, `comment_title`, `comment_text`, `created`, `modified`) VALUES
+(1, 1, 1, 0, 'test 9999', 'test 9', '2017-04-12', '2017-05-02');
+
 -- --------------------------------------------------------
 
 --
@@ -104,6 +140,13 @@ CREATE TABLE `product_whishlist` (
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `product_whishlist`
+--
+
+INSERT INTO `product_whishlist` (`id`, `id_product`, `id_user`, `is_whishlist`, `created`, `modified`) VALUES
+(1, 1, 1, 1, '2017-05-02', '2017-05-02');
+
 -- --------------------------------------------------------
 
 --
@@ -112,13 +155,21 @@ CREATE TABLE `product_whishlist` (
 
 CREATE TABLE `sale` (
   `id` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
+  `idproduct` int(11) NOT NULL,
   `percent_sale` tinyint(4) NOT NULL,
   `form_date` date NOT NULL,
   `to_date` date NOT NULL,
   `created` date NOT NULL,
   `modified` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sale`
+--
+
+INSERT INTO `sale` (`id`, `idproduct`, `percent_sale`, `form_date`, `to_date`, `created`, `modified`) VALUES
+(1, 1, 1, '2017-05-03', '2017-05-17', '2017-05-02', '2017-05-03'),
+(2, 2, 1, '2017-05-03', '2017-05-17', '2017-05-02', '2017-05-03');
 
 -- --------------------------------------------------------
 
@@ -147,6 +198,12 @@ INSERT INTO `user` (`id`, `email`, `password`, `name`, `phone`, `address`, `crea
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cast`
+--
+ALTER TABLE `cast`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `contact`
@@ -189,6 +246,11 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `cast`
+--
+ALTER TABLE `cast`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
@@ -197,22 +259,22 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `product_rating`
 --
 ALTER TABLE `product_rating`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `product_whishlist`
 --
 ALTER TABLE `product_whishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `sale`
 --
 ALTER TABLE `sale`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user`
 --
