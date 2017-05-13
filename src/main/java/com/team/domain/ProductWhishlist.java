@@ -19,13 +19,13 @@ public class ProductWhishlist implements Serializable{
 	 @Column(name = "id", nullable = false)
 	 private int id;
 	 
-	 @Column(name = "idProduct", nullable = false)
+	 @Column(name = "id_product", nullable = false)
 	 private int idProduct;
 	 
-	 @Column(name = "idUser", nullable = false)
+	 @Column(name = "id_user", nullable = false)
 	 private int idUser;
 	 
-	 @Column(name = "isWhishlist", nullable = false)
+	 @Column(name = "is_whishlist", nullable = false)
 	 private int isWhishlist;
 	 
 	 @Column(name = "created", nullable = false)

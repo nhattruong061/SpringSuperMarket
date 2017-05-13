@@ -10,6 +10,8 @@ public interface ProductWhishlistService {
 	
 	List<ProductWhishlist> search(int Id);
 	
+	ProductWhishlist findByIdProductAndIdUser( int idProduct,int idUser);
+	
 	ProductWhishlist findOne(int id);
 	
 	void save(ProductWhishlist ProductWhishlist);

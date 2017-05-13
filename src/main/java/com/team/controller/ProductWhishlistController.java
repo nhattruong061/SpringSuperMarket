@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.team.domain.ProductWhishlist;
@@ -41,9 +42,30 @@ public class ProductWhishlistController {
         return "/admin/product_whishlist_form";
     }
 	
+	// check da whishlist hay chua
+	//@RequestParam  
+	//@RequestParam
+	@PostMapping("/admin/product_whishlist/check_wl")
+    public ResponseEntity<?> checkWL(
+    		@RequestParam ("idUser") int idUser,
+    		@RequestParam ("idProduct") int idProduct) {
+   
+    	ProductWhishlist wl=productWhishlistService.findByIdProductAndIdUser(idProduct,idUser);
+    	if(wl==null)
+    	{
+    		return new ResponseEntity(0, HttpStatus.OK); 
+    	}
+    	else
+    	{
+    		return new ResponseEntity(wl.getIs_whishlist(), HttpStatus.OK);
+    	}
+        
+    }
+	
     @PostMapping("/admin/product_whishlist/create_single_page")
     public ResponseEntity<?> createdWhistlist(
-            @Valid @RequestBody int idUser, int idProduct) {
+    		@RequestParam ("idUser") int idUser,
+    		@RequestParam ("idProduct") int idProduct) {
     	
     	SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");//dd/MM/yyyy
         Date now = new Date();
@@ -51,11 +73,32 @@ public class ProductWhishlistController {
         //da kiem tra khi document ready
         //neu da co thi dung service lay ra va set lai bien is_whishlist
         //neu chua co thi tao moi nhu o duoi
-        ProductWhishlist wl = new ProductWhishlist(idProduct,idUser,1,strDate,strDate);
-
-        int result=1;
-
-        return ResponseEntity.ok("abc");
+        //ProductWhishlist wl = new ProductWhishlist(idProduct,idUser,1,strDate,strDate);
+    	ProductWhishlist wl=productWhishlistService.findByIdProductAndIdUser(idProduct,idUser);
+    	if(wl==null)
+    	{
+    		ProductWhishlist cr=new ProductWhishlist(idProduct,idUser,1,strDate,strDate);
+    		productWhishlistService.save(cr);
+    		return new ResponseEntity(wl.getIs_whishlist(), HttpStatus.OK);
+    	}
+    	else
+    	{
+    		if(wl.getIs_whishlist()==1){
+    			wl.setIs_whishlist(0);
+    			wl.setModified(strDate);
+    			productWhishlistService.save(wl);
+    			return new ResponseEntity(wl.getIs_whishlist(), HttpStatus.OK);
+    		}
+    		else
+    		{
+    			wl.setIs_whishlist(1);
+    			wl.setModified(strDate);
+    			productWhishlistService.save(wl);
+    			return new ResponseEntity(wl.getIs_whishlist(), HttpStatus.OK);
+    		}
+    		
+    	}
+        
     }
     
 	    @GetMapping("/admin/product_whishlist/{id}/edit")

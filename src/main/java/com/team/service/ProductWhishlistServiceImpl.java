@@ -45,4 +45,10 @@ public class ProductWhishlistServiceImpl implements ProductWhishlistService{
 		productWhishlistRepository.delete(id);
 	}
 
+	@Override
+	public ProductWhishlist findByIdProductAndIdUser( int idProduct,int idUser) {
+		// TODO Auto-generated method stub
+		return productWhishlistRepository.findByIdProductAndIdUser( idProduct, idUser);
+	}
+
 }
