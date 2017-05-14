@@ -1,17 +1,16 @@
 package com.team.domain;
-
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
-
 @Entity
 @Table(name = "user")
 public class User implements Serializable {
@@ -23,12 +22,20 @@ public class User implements Serializable {
     @Column(name = "id", nullable = false)
     private int id;
 
-    @Email
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
-    
-    @Column(name = "password")
-    private String pasword;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles;
+
     
     @Column(name = "name")
     private String name;
@@ -56,7 +63,7 @@ public class User implements Serializable {
 		super();
 		this.id = id;
 		this.email = email;
-		this.pasword = pasword;
+		this.password = pasword;
 		this.name = name;
 		this.phone = phone;
 		this.address = address;
@@ -80,12 +87,12 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public String getPasword() {
-		return pasword;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPasword(String pasword) {
-		this.pasword = pasword;
+	public void setPassword(String pasword) {
+		this.password = pasword;
 	}
 
 	public String getName() {
@@ -132,5 +139,12 @@ public class User implements Serializable {
 		return serialVersionUID;
 	}
     
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
     
 }

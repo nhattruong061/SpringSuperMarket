@@ -39,6 +39,10 @@
 					</ul> 
 					<div class="clearfix"> </div>
 				</div>
+	 <script src="../js/minicart.min.js"></script>
+    <script>
+    	paypal.minicart.render();
+	</script>
 				<div class="products-row">
 					<div class="col-md-3 product-grids" th:each="product : ${products}">
 						<div class="agile-products">
@@ -47,12 +51,26 @@
 							<div class="agile-product-text">              
 								<h5><a th:href="'/market/'+${product.id}+'/single'" href="single.html" th:text="${product.name}">Refrigerator</a></h5> 
 								<h6 ><del th:text="'$'+${product.price}">$700</del> <i th:text="'$'+(${product.price}-(${product.price}*${product.is_sale})/100)">$300</i></h6> 
-								<form action="#" method="post">
-									<input type="hidden" name="cmd" value="_cart" ></input>
+								<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<!-- 									<input type="hidden" name="cmd" value="_cart" ></input>
 									<input type="hidden" name="add" value="1" ></input> 
 									<input type="hidden" name="w3ls_item" value="Refrigerator" ></input> 
-									<input type="hidden" name="amount" value="300.00" ></input> 
-									<button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
+									<input type="hidden" name="amount" value="300.00" ></input>  -->
+									<!--  -->
+									<input type="hidden" name="cmd" value="_cart"/>
+									<input type="hidden" name="add" value="1"/>
+									<input type="hidden" name="business" value=""/>
+									<input type="hidden" name="item_name" th:attr="value=${product.name}"/>
+									<input type="hidden" name="item_number" th:attr="value=${product.id}"/>
+									<input type="hidden" name="amount" th:attr="value=${product.price}"/>
+									<input type="hidden" name="shipping" value="00"/>
+									<input type="hidden" name="shipping2" value="50"/>
+									<input type="hidden" name="handling" value="2.00 "/>
+									<input type="hidden" name="currency_code" value="USD"/>
+									<input type="hidden" name="return" value=""/>
+									<input type="hidden" name="undefined_quantity" value="1"/>
+									<!--  -->
+									<button type="submit" name="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
 								</form>
 							</div>
 						</div>
@@ -198,7 +216,21 @@
 						  navigation : true
 					 
 						});
-						
+						//script xu li nut mua hang
+					    $(document).on("click","#btn-buynow",function() {
+					    	var count=0;
+							$( ".minicart-item li" ).each(function( index ) {
+								  //alert("shit!");
+								  console.log("shit"+count);
+								  count++;
+								  console.log("id:"+$(this).find('input[type="hidden"]').attr("value"));
+								  //hiện giờ đã lấy được id của từng sản phầm.
+								  //bước tiếp theo sẽ qua trang xác nhận-trang gior hàng( trang đó hiện ds sản phẩm. cách thức thanh toán)
+								  //có hiện nhập địa chỉ, sdt người nhận.
+								  // sau khi nhấn nút sẽ hiện popup thông báo thành công và gửi ajax lưu vào csdl bảng "đặt mua"
+								  //chuyển về trang chủ.
+							});
+					    });
 					}); 
 				</script>
 				<div id="owl-demo5" class="owl-carousel">
